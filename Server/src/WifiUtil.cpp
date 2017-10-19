@@ -233,7 +233,7 @@ bool checkWifiIsConnected(){
     int match = 0;
     /* 15s to check wifi whether connected */
     for(int i=0;i<5;i++){
-        sleep(1);
+        sleep(2);
         match = 0;
         execute("wpa_cli -iwlan0 status",ret_buff);
         stateSList = charArrayToList(ret_buff);
@@ -262,6 +262,9 @@ bool checkWifiIsConnected(){
     if(!isWifiConnected){
         // TODO play audio: wifi failed.
         log_info("wifi connect failed.please check enviroment.\n");
+    } else {
+        system("gst-play-1.0 -q --no-interactive /data/mode_sound/wifi_connected.mp3 &");
+        system("softapServer stop &");
     }
 }
 
