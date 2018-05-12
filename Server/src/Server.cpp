@@ -221,7 +221,7 @@ int start(const char* ap_name){
     save_file(STATUS_FILE, contant);
     serverSockfd = server_sockfd;
 
-    system("gst-play-1.0 -q --no-interactive /data/mode_sound/wifi_mode.mp3 &");
+    system("gst-play-1.0 -q --no-interactive /oem/mode_sound/wifi_mode.mp3 &");
 
     /* accept a connection all time*/
     while(1){
