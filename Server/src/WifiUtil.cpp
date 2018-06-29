@@ -262,8 +262,10 @@ bool checkWifiIsConnected(){
     if(!isWifiConnected){
         // TODO play audio: wifi failed.
         log_info("wifi connect failed.please check enviroment.\n");
+        system("gst-play-1.0 -q --no-interactive /usr/ap_notification/wifi_connect_failed.mp3 &");
+ 
     } else {
-        system("gst-play-1.0 -q --no-interactive /oem/mode_sound/wifi_connected.mp3 &");
+        system("gst-play-1.0 -q --no-interactive /usr/ap_notification/wifi_conneted.mp3 &");
         system("softapServer stop &");
     }
 }

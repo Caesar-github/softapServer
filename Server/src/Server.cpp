@@ -221,7 +221,6 @@ int start(const char* ap_name){
     save_file(STATUS_FILE, contant);
     serverSockfd = server_sockfd;
 
-    system("gst-play-1.0 -q --no-interactive /oem/mode_sound/wifi_mode.mp3 &");
 
     /* accept a connection all time*/
     while(1){
@@ -251,6 +250,7 @@ int start(const char* ap_name){
 }
 
 int main(int argc, char *argv[]){
+    system("gst-play-1.0 -q --no-interactive /usr/ap_notification/start_softap.mp3 &");
     if (argc > 1) {
         if (argc > 2) {
             if (0 != strcmp(argv[1], "start")) {
