@@ -297,6 +297,7 @@ static bool saveWifiConfig(const char* name, const char* pwd)
 {
     FILE *fp;
     char body[WIFI_CONFIG_MAX];
+    int fd;
     fp = fopen("/data/cfg/wpa_supplicant.conf", "w");
 
     if (fp == NULL)
@@ -306,6 +307,12 @@ static bool saveWifiConfig(const char* name, const char* pwd)
 
     snprintf(body, sizeof(body), WIFI_CONFIG_FORMAT, name, pwd);
     fputs(body, fp);
+    fflush(fp);
+    fd = fileno(fp);
+    if (fd >= 0) {
+        fsync(fd);
+        printf("save wpa_supplicant.conf sucecees.\n");
+    }
     fclose(fp);
 
     return 0;
