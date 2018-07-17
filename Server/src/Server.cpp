@@ -191,6 +191,7 @@ int start(const char* ap_name){
     pid_t pid;
 
     char cmd[124];
+    system("gst-play-1.0 -q --no-interactive /usr/ap_notification/start_softap.mp3 &");
     memset(cmd, 0, sizeof(cmd));
     snprintf(cmd, sizeof(cmd), "softapDemo %s", ap_name);
     system(cmd);
@@ -250,7 +251,7 @@ int start(const char* ap_name){
 }
 
 int main(int argc, char *argv[]){
-    system("gst-play-1.0 -q --no-interactive /usr/ap_notification/start_softap.mp3 &");
+    //system("gst-play-1.0 -q --no-interactive /usr/ap_notification/start_softap.mp3 &");
     if (argc > 1) {
         if (argc > 2) {
             if (0 != strcmp(argv[1], "start")) {
